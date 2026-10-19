@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anurag Pandey — AI &amp; Apps Chapter Lead · Data &amp; AI · Agentic AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#071B24;
+    --ink-2:#0C2C38;
+    --slate:#4A6270;
+    --paper:#F3F6F5;
+    --paper-2:#FFFFFF;
+    --line:#D5E0DC;
+    --teal:#12786E;
+    --teal-deep:#0B5C55;
+    --cyan:#2EC4B6;
+    --cyan-soft:#D5F3EF;
+    --sand:#C4A36A;
+    --brick:#9C4A3B;
+    --brick-soft:#F1DDD6;
+    --text:#1A2C33;
+
+    --display:'Fraunces', serif;
+    --body:'Inter', system-ui, sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+
+  *{margin:0; padding:0; box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:var(--body);
+    color:var(--text);
+    background:#D9E2DF;
+    -webkit-font-smoothing:antialiased;
+    padding:32px 16px;
+  }
+
+  .page{
+    max-width:900px;
+    margin:0 auto;
+    background:var(--paper);
+    box-shadow:0 30px 60px -20px rgba(7,27,36,0.38);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 92% -8%, rgba(46,196,182,0.22), transparent 42%),
+      radial-gradient(circle at 8% 110%, rgba(18,120,110,0.18), transparent 40%),
+      linear-gradient(155deg, var(--ink) 0%, var(--ink-2) 100%);
+    color:#E7F2F0;
+    padding:44px 48px 34px;
+    position:relative;
+  }
+  .hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:linear-gradient(rgba(231,242,240,0.035) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(231,242,240,0.035) 1px, transparent 1px);
+    background-size:28px 28px;
+    mask-image:linear-gradient(180deg, rgba(0,0,0,0.55), transparent 78%);
+    pointer-events:none;
+  }
+  .hero-top, .stat-row{position:relative; z-index:1;}
+  .hero-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .hero-id .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    margin-bottom:10px;
+    display:block;
+  }
+  .hero-id h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:44px;
+    line-height:1.05;
+    letter-spacing:.005em;
+    color:#FFFFFF;
+  }
+  .hero-id .role-line{
+    margin-top:10px;
+    font-family:var(--body);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.02em;
+    color:#B7D4CF;
+    max-width:420px;
+    line-height:1.4;
+  }
+  .hero-contact{
+    font-family:var(--mono);
+    font-size:12px;
+    color:#B7D4CF;
+    text-align:right;
+    line-height:1.85;
+  }
+  .hero-contact a{color:#E7F2F0; text-decoration:none; border-bottom:1px solid rgba(231,242,240,0.35);}
+  .hero-contact a:hover{border-color:#E7F2F0;}
+  .hero-contact div{display:flex; align-items:center; justify-content:flex-end; gap:8px;}
+  .hero-contact svg{width:13px; height:13px; opacity:.85; flex-shrink:0;}
+
+  .stat-row{
+    display:flex;
+    gap:10px;
+    margin-top:28px;
+  }
+  .stat-chip{
+    flex:1 1 0;
+    border:1px solid rgba(231,242,240,0.18);
+    background:rgba(255,255,255,0.05);
+    border-radius:3px;
+    padding:10px 12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-height:52px;
+    min-width:0;
+  }
+  .stat-chip .stat-logo{
+    flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .stat-chip .brand{
+    font-family:var(--body);
+    font-weight:800;
+    letter-spacing:.02em;
+    line-height:1;
+  }
+  .stat-chip .brand.anz-t{color:#2E9BD6; font-size:18px;}
+  .stat-chip .txt{display:flex; flex-direction:column; justify-content:center; min-width:0;}
+  .stat-chip .n{
+    font-family:var(--display);
+    font-size:17px;
+    font-weight:600;
+    color:#FFFFFF;
+    display:block;
+    line-height:1.15;
+  }
+  .stat-chip .d{
+    font-family:var(--body);
+    font-size:10.5px;
+    color:#95B5B0;
+    letter-spacing:.01em;
+    line-height:1.3;
+  }
+  .stat-chip .d a{
+    color:#D5F3EF;
+    text-decoration:none;
+    border-bottom:1px solid rgba(213,243,239,0.35);
+  }
+  .stat-chip .d a:hover{border-color:#D5F3EF;}
+
+  /* ---------- TRACK ---------- */
+  .track-section{
+    padding:30px 48px 22px;
+    background:var(--paper-2);
+    border-bottom:1px solid var(--line);
+  }
+  .track-heading{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:22px;
+  }
+  .track-heading strong{color:var(--ink);}
+  .track{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    padding:0 6px;
+  }
+  .track::before{
+    content:'';
+    position:absolute;
+    left:14px; right:14px; top:7px;
+    height:2px;
+    background:repeating-linear-gradient(to right, var(--line) 0 6px, transparent 6px 11px);
+  }
+  .stop{
+    position:relative;
+    width:31%;
+    text-align:left;
+  }
+  .stop .dot{
+    width:15px; height:15px;
+    border-radius:50%;
+    border:3px solid var(--paper-2);
+    outline:1.5px solid var(--dot-color, var(--teal));
+    background:var(--dot-color, var(--teal));
+    margin-bottom:12px;
+    box-shadow:0 0 0 3px var(--paper-2);
+  }
+  .stop .dot.live{
+    animation:dot-blink 1.4s ease-in-out infinite;
+  }
+  @keyframes dot-blink{
+    0%, 100%{opacity:1; box-shadow:0 0 0 3px var(--paper-2), 0 0 0 0 rgba(46,196,182,0.55);}
+    50%{opacity:.35; box-shadow:0 0 0 3px var(--paper-2), 0 0 0 8px rgba(46,196,182,0);}
+  }
+  .stop .org{
+    font-family:var(--body);
+    font-weight:700;
+    font-size:13px;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    gap:7px;
+  }
+  .stop .role{
+    font-size:11.5px;
+    color:var(--slate);
+    margin-top:2px;
+    line-height:1.35;
+  }
+  .stop .dates{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--sand);
+    margin-top:6px;
+    letter-spacing:.02em;
+  }
+  .track .brand{
+    font-family:var(--body);
+    font-weight:800;
+    letter-spacing:.02em;
+    line-height:1;
+  }
+  .track .brand.anz-t{color:#2E9BD6;}
+  .track .brand.sensis-t{
+    color:#111;
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:-.03em;
+    text-transform:lowercase;
+  }
+  .track .brand.rel-t{
+    color:#0A2F6B;
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:.01em;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  .body-wrap{padding:8px 48px 40px;}
+  section{padding-top:30px;}
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:16px;
+  }
+  .sec-head .num{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--sand);
+    letter-spacing:.05em;
+  }
+  .sec-head h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:19px;
+    color:var(--ink);
+    letter-spacing:.01em;
+    white-space:nowrap;
+  }
+  .sec-head .rule{
+    height:1px;
+    width:100%;
+    background:var(--line);
+  }
+
+  .summary p{
+    font-size:14.5px;
+    line-height:1.75;
+    color:#33474D;
+    text-align:justify;
+    text-justify:inter-word;
+    hyphens:auto;
+  }
+  .summary b{color:var(--ink); font-weight:700;}
+  .summary .highlight{color:var(--teal); font-weight:600;}
+
+  .comp-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:16px;
+  }
+  .comp-col{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:16px 18px 14px;
+    position:relative;
+  }
+  .comp-col::before{
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    border-radius:6px 6px 0 0;
+  }
+  .comp-col:nth-child(1)::before{background:var(--teal);}
+  .comp-col:nth-child(2)::before{background:var(--sand);}
+  .comp-col:nth-child(3)::before{background:var(--brick);}
+  .comp-col .cat{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .comp-col:nth-child(1) .cat{color:var(--teal);}
+  .comp-col:nth-child(2) .cat{color:var(--sand);}
+  .comp-col:nth-child(3) .cat{color:var(--brick);}
+  .tag-list{display:flex; flex-direction:column; gap:0;}
+  .tag{
+    font-size:12.5px;
+    padding:7px 0 7px 18px;
+    border-bottom:1px dashed var(--line);
+    color:#31464C;
+    line-height:1.3;
+    position:relative;
+  }
+  .tag:last-child{border-bottom:none;}
+  .tag::before{
+    content:'';
+    position:absolute;
+    left:2px; top:12px;
+    width:5px; height:5px;
+    border-radius:1px;
+    transform:rotate(45deg);
+  }
+  .comp-col:nth-child(1) .tag::before{background:var(--teal);}
+  .comp-col:nth-child(2) .tag::before{background:var(--sand);}
+  .comp-col:nth-child(3) .tag::before{background:var(--brick);}
+
+  .role-card{margin-bottom:26px;}
+  .role-card:last-child{margin-bottom:0;}
+  .role-top{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+  .badge{
+    flex-shrink:0;
+    width:56px; height:48px;
+    border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display);
+    font-weight:700;
+    font-size:13px;
+    color:#fff;
+    letter-spacing:.01em;
+  }
+  .badge.logo{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:0 4px;
+    align-self:flex-start;
+    margin-top:1px;
+  }
+  .badge.logo.anz{border-top:3px solid #2E9BD6;}
+  .badge.logo.sensis{border-top:3px solid #111;}
+  .badge.logo.rel{border-top:3px solid #0A2F6B;}
+  .badge .brand{
+    font-family:var(--body);
+    font-weight:800;
+    letter-spacing:.02em;
+    line-height:1;
+  }
+  .badge .brand.anz-t{color:#2E9BD6; font-size:17px;}
+  .badge .brand.sensis-t{
+    color:#111;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:-.03em;
+    text-transform:lowercase;
+  }
+  .badge .brand.rel-t{
+    color:#0A2F6B;
+    font-size:10.5px;
+    font-weight:800;
+    letter-spacing:.01em;
+    text-align:center;
+    line-height:1.15;
+  }
+
+  .role-meta{flex:1;}
+  .role-meta .title-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .role-meta h3{
+    font-family:var(--body);
+    font-weight:700;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .role-meta .org-name{color:var(--slate); font-weight:600;}
+  .role-meta .dates{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--sand);
+    white-space:nowrap;
+  }
+  .role-meta .title-line.sub{margin-top:3px;}
+  .role-meta .title-line.sub h3{font-size:13.5px; font-weight:600; color:var(--slate);}
+
+  ul.bullets{list-style:none; margin-left:70px;}
+  .role-card > ul.bullets{margin-top:12px;}
+  ul.bullets li{
+    position:relative;
+    font-size:13px;
+    line-height:1.6;
+    color:#33474D;
+    padding-left:14px;
+    margin-bottom:6px;
+  }
+  ul.bullets li::before{
+    content:'';
+    position:absolute;
+    left:0; top:8px;
+    width:5px; height:5px;
+    background:var(--sand);
+    border-radius:1px;
+    transform:rotate(45deg);
+  }
+  ul.bullets li b{color:var(--ink);}
+  .job-tools{
+    margin:8px 0 0 70px;
+    font-size:11.5px;
+    color:var(--slate);
+    font-style:italic;
+    line-height:1.45;
+  }
+
+  .edu-grid{
+    display:grid;
+    grid-template-columns:1.15fr 1fr 1fr;
+    gap:14px;
+  }
+  .edu-card{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:14px 14px;
+  }
+  .edu-card .badge{width:48px; height:42px; font-size:10.5px;}
+  .edu-card .badge:not(.logo){background:linear-gradient(155deg, var(--ink-2), var(--ink));}
+  .edu-card h4{font-size:13px; color:var(--ink); font-weight:700; line-height:1.3;}
+  .edu-card p{font-size:11px; color:var(--slate); margin-top:3px; line-height:1.45;}
+
+  footer{
+    padding:20px 48px 26px;
+    background:var(--ink);
+    color:#8AA8A4;
+    font-family:var(--mono);
+    font-size:10.5px;
+    display:flex;
+    justify-content:space-between;
+    letter-spacing:.02em;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  footer span strong{color:#E7F2F0;}
+
+  @media (max-width:720px){
+    body{padding:0;}
+    .page{box-shadow:none; border:none;}
+    .hero{padding:30px 20px 24px;}
+    .stat-row{flex-wrap:wrap; gap:8px;}
+    .stat-chip{flex:1 1 100%; min-height:46px;}
+    .hero-top{flex-direction:column; gap:18px;}
+    .hero-contact{text-align:left; font-size:12px;}
+    .hero-contact div{justify-content:flex-start;}
+    .hero-id h1{font-size:32px;}
+    .hero-id .role-line{font-size:13.5px;}
+    .track-section{padding:24px 20px 18px;}
+    .track{flex-direction:column; gap:22px;}
+    .track::before{left:7px; top:0; bottom:0; right:auto; width:2px; height:auto; background:repeating-linear-gradient(to bottom, var(--line) 0 6px, transparent 6px 11px);}
+    .stop{width:100%; padding-left:24px;}
+    .body-wrap{padding:8px 20px 28px;}
+    section{padding-top:24px;}
+    .sec-head h2{font-size:17px; white-space:normal;}
+    .summary p{font-size:13.5px;}
+    .comp-grid{grid-template-columns:1fr;}
+    ul.bullets, .job-tools{margin-left:0;}
+    .role-top{gap:10px;}
+    .badge, .badge.logo{width:44px; height:38px; font-size:11px;}
+    .badge .brand.anz-t{font-size:14px;}
+    .badge .brand.sensis-t{font-size:13px;}
+    .badge .brand.rel-t{font-size:9px;}
+    .track .brand.sensis-t{font-size:20px;}
+    .role-meta h3{font-size:13.5px;}
+    .role-meta .dates{white-space:normal;}
+    ul.bullets li{font-size:12.5px;}
+    .edu-grid{grid-template-columns:1fr;}
+    footer{padding:18px 20px; flex-direction:column; font-size:10px;}
+  }
+
+  @media print{
+    body{background:#fff; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .page{box-shadow:none; border:none; max-width:100%; overflow:visible;}
+    @page{size:A4; margin:8mm;}
+
+    .hero{
+      padding:22px 26px 18px;
+    }
+    .hero-id h1{font-size:32px;}
+    .hero-id .role-line{font-size:12.5px; margin-top:8px;}
+    .hero-contact{font-size:10.5px; line-height:1.65;}
+
+    .stat-row{gap:8px; margin-top:20px;}
+    .stat-chip{min-height:52px; padding:9px 10px;}
+    .stat-chip .n{font-size:15px;}
+    .stop .dot.live{animation:none;}
+    .stat-chip .d{font-size:9.5px;}
+
+    .track-section{padding:14px 26px 12px;}
+    .track-heading{margin-bottom:12px;}
+
+    .body-wrap{
+      padding:0 26px 18px;
+      display:flex;
+      flex-direction:column;
+    }
+    section{padding-top:14px;}
+    .sec-head{margin-bottom:12px;}
+    .summary p{font-size:13.2px; line-height:1.65;}
+    .comp-col{padding:13px 14px 10px;}
+    .tag{font-size:12px; padding:6px 0 6px 16px;}
+    .edu-grid{gap:10px;}
+    .edu-card{padding:12px 12px;}
+    .edu-card h4{font-size:12px;}
+    .edu-card p{font-size:10px;}
+
+    #summary{order:1; padding-top:18px;}
+    #competencies{order:2; padding-top:20px;}
+    #education{
+      order:3;
+      padding-top:20px;
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+    #experience{
+      order:4;
+      break-before:page;
+      page-break-before:always;
+      padding-top:6px;
+    }
+
+    .role-card, .edu-card, .comp-col, .stat-chip{break-inside:avoid;}
+    .role-card{margin-bottom:16px;}
+    ul.bullets li{font-size:12.2px; line-height:1.48; margin-bottom:4px;}
+    .job-tools{font-size:10.5px;}
+    footer{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="hero">
+    <div class="hero-top">
+      <div class="hero-id">
+        <span class="eyebrow">AI &amp; Apps Chapter Lead · Data &amp; AI Chapter Lead</span>
+        <h1>Anurag Pandey</h1>
+        <div class="role-line">Agentic &amp; GenAI systems — design through production, evaluation and scale</div>
+      </div>
+      <div class="hero-contact">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Melbourne, Australia
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1.1.4 2.2.7 3.2a2 2 0 0 1-.5 2.1L8 10.3a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .4 2.1.6 3.2.7a2 2 0 0 1 1.7 2z"/></svg>
+          +61 422 337 442
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
+          <a href="mailto:anunitb@gmail.com">anunitb@gmail.com</a>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://www.linkedin.com/in/anuragnitb">linkedin.com/in/anuragnitb</a>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <a href="https://github.com/anurag-code">github.com/anurag-code</a>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 8h5M8 12h8M8 16h6"/></svg>
+          <a href="https://medium.com/@anunitb">medium.com/@anunitb</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-chip">
+        <div class="stat-logo"><span class="brand anz-t">ANZ</span></div>
+        <div class="txt"><span class="n">5+ yrs</span><span class="d">Chapter Lead · Data &amp; AI, now AI &amp; Apps</span></div>
+      </div>
+      <div class="stat-chip">
+        <div class="txt"><span class="n">14+ yrs</span><span class="d">Artificial Intelligence, Machine Learning &amp; Data</span></div>
+      </div>
+      <div class="stat-chip">
+        <div class="txt"><span class="n">200+</span><span class="d">Context Orchestration at scale</span></div>
+      </div>
+      <div class="stat-chip">
+        <div class="txt"><span class="n">150k+ reads</span><span class="d"><a href="https://medium.com/data-science/survival-analysis-intuition-implementation-in-python-504fde4fcf8e">Survival Analysis</a> · <a href="https://medium.com/data-science/explainable-ai-application-of-shapely-values-in-marketing-analytics-57b716fc9d1f">XAI / SHAP</a></span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="track-section">
+    <div class="track-heading">Career journey — <strong>from energy analytics to agentic AI</strong></div>
+    <div class="track">
+      <div class="stop" style="--dot-color:var(--brick)">
+        <div class="dot"></div>
+        <div class="org"><span class="brand rel-t">Reliance</span></div>
+        <div class="role">Senior Manager</div>
+        <div class="dates">AUG 2008 – FEB 2017</div>
+      </div>
+      <div class="stop" style="--dot-color:var(--teal)">
+        <div class="dot"></div>
+        <div class="org"><span class="brand sensis-t">sensis</span></div>
+        <div class="role">Data Scientist</div>
+        <div class="dates">JUN 2017 – JUN 2021</div>
+      </div>
+      <div class="stop" style="--dot-color:var(--cyan)">
+        <div class="dot live"></div>
+        <div class="org"><span class="brand anz-t" style="font-size:18px;">ANZ</span></div>
+        <div class="role"><b>AI &amp; Apps Chapter Lead</b> (2026 – present)<br>Data &amp; AI Chapter Lead (2021 – 2026)</div>
+        <div class="dates">JUN 2021 – PRESENT</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+
+    <section id="summary">
+      <div class="sec-head"><span class="num">01</span><h2>Summary</h2><div class="rule"></div></div>
+      <div class="summary">
+        <p>Data &amp; AI leader with <b>14+ years</b> spanning data engineering, machine learning and, most recently, end-to-end delivery of <span class="highlight">Generative AI agentic systems</span> — from design and development through production deployment, evaluation, monitoring and scaling. Currently leading the <b>AI &amp; Apps</b> chapter at <b>ANZ</b>, having previously led the Data &amp; AI chapter, setting technical direction for GenAI initiatives while mentoring engineers and data scientists. Proven track record turning ambiguous business problems into <span class="highlight">production-grade, measurable ML and LLM solutions</span> across finance, banking, digital and marketing.</p>
+      </div>
+    </section>
+
+    <section id="competencies">
+      <div class="sec-head"><span class="num">02</span><h2>Core Competencies</h2><div class="rule"></div></div>
+      <div class="comp-grid">
+        <div class="comp-col">
+          <div class="cat">Agentic AI / GenAI</div>
+          <div class="tag-list">
+            <span class="tag">Agentic workflow design</span>
+            <span class="tag">Prompt &amp; context engineering</span>
+            <span class="tag">State, memory &amp; loop / harness</span>
+            <span class="tag">Orchestration &amp; caching</span>
+            <span class="tag">Evaluation, monitoring &amp; HITL</span>
+            <span class="tag">Fine-tuning</span>
+            <span class="tag">AI security · Guardrails</span>
+          </div>
+        </div>
+        <div class="comp-col">
+          <div class="cat">ML / NLP</div>
+          <div class="tag-list">
+            <span class="tag">Propensity &amp; churn modelling</span>
+            <span class="tag">Segmentation</span>
+            <span class="tag">NLP · ColBERT</span>
+            <span class="tag">Survival analysis</span>
+            <span class="tag">Marketing mix modelling</span>
+            <span class="tag">Monitoring &amp; retraining</span>
+            <span class="tag">Explainability (XAI)</span>
+          </div>
+        </div>
+        <div class="comp-col">
+          <div class="cat">Engineering &amp; Platforms</div>
+          <div class="tag-list">
+            <span class="tag">Python · FastAPI · JavaScript</span>
+            <span class="tag">Docker · Airflow · Terraform</span>
+            <span class="tag">GitHub Actions (CI/CD)</span>
+            <span class="tag">GCP — Vertex AI, Gemini</span>
+            <span class="tag">AWS Bedrock</span>
+            <span class="tag">Llama · DeepSeek · Kimi · GLM</span>
+            <span class="tag">LangGraph · MCP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="sec-head"><span class="num">03</span><h2>Experience</h2><div class="rule"></div></div>
+
+      <div class="role-card">
+        <div class="role-top">
+          <div class="badge logo anz"><span class="brand anz-t">ANZ</span></div>
+          <div class="role-meta">
+            <div class="title-line">
+              <h3>AI &amp; Apps Chapter Lead <span class="org-name">— ANZ Bank, Melbourne</span></h3>
+              <span class="dates">2026 – PRESENT</span>
+            </div>
+            <div class="title-line sub">
+              <h3>Data &amp; AI Chapter Lead</h3>
+              <span class="dates">JUN 2021 – JULY 2026</span>
+            </div>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>Lead the technical direction for the AI &amp; Apps chapter (2026–present), and previously the Data &amp; AI chapter, driving delivery of Generative AI agentic applications end-to-end — architecture, development, production deployment, evaluation and ongoing monitoring at scale.</li>
+          <li>From conceptualisation to production, completed <b>3 workflow automations</b> using Agentic AI frameworks.</li>
+          <li>Built enterprise agentic AI Co-worker workflows using Gemini models, LangGraph and Google's Agent Development Kit (ADK), with tool-use, planning and multi-step reasoning.</li>
+          <li>Implemented a self-built prompt orchestration algorithm managing <b>200+</b> context isolation and orchestration paths within a workflow agent, with human-in-the-loop override functionality, in production.</li>
+          <li>Designed, developed and implemented an automated prompt development and enhancement agent using an <b>evaluation framework</b>, including prompt-component and attribution analysis for impact assessment.</li>
+          <li>Pre-GenAI era (before 2022): designed and productionised an attribute lineage model for the domain's data warehouse, and used it to build a dynamic schema suite for adding columns on the fly.</li>
+          <li>Mentor data scientists and engineers, and translate complex technical findings into decisions for non-technical, senior stakeholders.</li>
+        </ul>
+        <div class="job-tools">Python, LangGraph, Google ADK, Gemini, Vertex AI, DBT, Airflow, BigQuery, GCS, Cloud Build, Docker, SQL, Tableau</div>
+      </div>
+
+      <div class="role-card">
+        <div class="role-top">
+          <div class="badge logo sensis"><span class="brand sensis-t">sensis</span></div>
+          <div class="role-meta">
+            <div class="title-line">
+              <h3>Data Scientist <span class="org-name">— Sensis Pty Ltd, Melbourne</span></h3>
+              <span class="dates">JUN 2017 – JUN 2021</span>
+            </div>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>Led a team of three analysts; designed an NLP text-extraction application integrated into yellowpages.com.au, lifting indexed page rank by <b>30%</b>.</li>
+          <li>Built a Marketing Mix Model with explainable AI (XAI) that delivered a <b>27% quarter-on-quarter lift</b> in marketing spend efficiency.</li>
+          <li>Built a churn-propensity model and probabilistic segmentation that increased customer retention by <b>15%+</b>, surfaced in enterprise Tableau reporting.</li>
+          <li>Delivered a postcode recommendation application for sales and marketing that reduced customer complaints by <b>30%</b>.</li>
+        </ul>
+        <div class="job-tools">Python, NLP, SQL, Tableau, explainable AI</div>
+      </div>
+
+      <div class="role-card">
+        <div class="role-top">
+          <div class="badge logo rel"><span class="brand rel-t">Reliance</span></div>
+          <div class="role-meta">
+            <div class="title-line">
+              <h3>Senior Manager <span class="org-name">— Reliance Group, Mumbai</span></h3>
+              <span class="dates">AUG 2008 – FEB 2017</span>
+            </div>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>Progressed from Manager (Analyst) to Senior Manager across energy operations and generation.</li>
+          <li>Delivered a cross-functional employee <b>Health Index</b> spanning HR, medical and safety stakeholders (2016).</li>
+          <li>Built <b>predictive-maintenance</b> models on SCADA telemetry using survival analysis to forecast asset failure risk and prioritise interventions.</li>
+          <li>Built geospatial analytics for the <b>coal transportation network from mine to port</b>, including route and network intelligence, plus <b>sensitivity and feasibility analysis</b> on capex and opex for leadership decisions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="sec-head"><span class="num">04</span><h2>Education</h2><div class="rule"></div></div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="badge">MAI</div>
+          <div>
+            <h4>Master of Artificial Intelligence</h4>
+            <p>Monash University — 2025–Present (Part-time)</p>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="badge">PG</div>
+          <div>
+            <h4>Analytics &amp; Data Science</h4>
+            <p>Great Lakes Institute of Management — 2014–2015</p>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="badge">B.E.</div>
+          <div>
+            <h4>Bachelor of Engineering</h4>
+            <p>NIT Bhopal — 2004–2008</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <span>Anurag Pandey <strong>· AI &amp; Apps Chapter Lead</strong></span>
+    <span>Melbourne · +61 422 337 442 · anunitb@gmail.com</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
